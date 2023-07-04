@@ -21,7 +21,7 @@ chromiumos-overlay/chromeos/config/make.conf.generic-target
 
 # CHROMEOS-CHROME EBUILD MODIFICATIONS
 widevine
--Official
+# -Official
 
 libassistant
 

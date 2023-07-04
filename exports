@@ -6,24 +6,18 @@ repo rebase
 repo sync -j4
 
 ## EXPORT COMMANDS
-# export BOARD=amd64-generic
-export BOARD=amd64-frick &&
+# export BOARD=amd64-frick
+export BOARD=raspi-frick &&
 export NINJA_SUMMARIZE_BUILD=1 &&
 export CHROME_ORIGIN=LOCAL_SOURCE &&
 export CHROME_BUILD_TYPE='_official' &&
 export OFFICIAL_BUILD='1' &&
 export BUILDTYPE=Release
 
-## EMERGE COMMANDS
-#sudo emerge app-arch/tar
-#sudo emerge app-admin/sysstat
-#sudo emerge sys-process/iotop
-
 sudo emerge net-print/cups
 
 # BUILD COMMANDS (cros_workon is optional to build kernel from source.)
 setup_board --board=${BOARD} --force &&
-cros_workon --board=${BOARD} start sys-kernel/chromeos-kernel-5_15 &&
 cros_workon --board=${BOARD} start chromeos-base/chromiumos-assets &&
 build_packages --board=${BOARD} --no-withdebug --no-withautotest
 build_image --board=${BOARD} --no-enable-rootfs-verification dev
