@@ -1,0 +1,57 @@
+# From FydeOS overlay
+chromeos-base/libchromeos-use-flags native_gpu_memory_buffers drm_atomic
+chromeos-base/chromeos-chrome chrome_media v4l2_codec -iioservice
+chromeos-base/chromeos-base -cros_embedded
+sys-apps/gptfdisk -ncurses
+chromeos-base/shill -wireguard
+chromeos-base/crosvm -crosvm-video-decoder -crosvm-video-encoder
+dev-libs/libevent threads
+x11-libs/arc-libdrm libkms
+media-libs/mesa egl -gbm gles2 shared-glapi
+media-libs/mesa-img egl -gbm gles2 shared-glapi
+media-libs/piglit waffle
+media-libs/waffle gbm
+sys-apps/flashrom use_os_timer
+media-sound/adhd -selinux
+#media-libs/arc-mesa android_vulkan_compute_0 vulkan
+sys-kernel/raspberry-kernel apply_patches -clang -lld -llvm_ias -llvm
+>=sys-kernel/raspberry-kernel-9999 -apply_patches
+
+# Enable codecs and disable debug stuff.
+chromeos-base/chromeos-chrome -chrome_debug -cros-debug -chrome_debug_tests chrome_media x264 x265 widevine
+
+# Remove embedded config for generic boards.
+chromeos-base/chromeos-base -cros_embedded
+
+# Disable NVMe and Synaptics firmware updating.
+sys-apps/fwupd -nvme -synaptics
+
+# Enable Unicode.
+sys-libs/ncurses unicode
+
+# htop USE flags
+sys-process/htop caps lm-sensors llvm-libunwind unicode -debug
+
+# modern top UI
+sys-process/procps modern-top
+
+# nano USE flags
+app-editors/nano unicode ncurses
+
+# lm_sensors USE flags
+sys-apps/lm-sensors contrib
+
+# OpenCV gflags patch
+media-libs/opencv gflags contrib
+
+# chromeos-bsp gflags package USE
+virtual/chromeos-bsp gflags
+
+# Fix alsa-plugins ffmpeg build error.
+media-plugins/alsa-plugins -ffmpeg
+
+# Fix gptfdisk bug
+sys-apps/gptfdisk -ncurses
+
+# Bluez cups bug fix
+net-wireless/bluez cups hid2hci

@@ -1,0 +1,51 @@
+# Copyright 2023 The Chromium OS Authors and Alex313031. All rights reserved.
+# Distributed under the terms of the GNU General Public License v2
+
+# Turn on the video cards this board uses.
+VIDEO_CARDS="vc4"
+
+# Initial value just for style purposes.
+USE=""
+
+# From FydeOS overlay
+USE="${USE} hardfp kernel-5_10 boot_dts_device_tree transparent_hugepage -acpi_ac"
+USE="${USE} mosys_eventlog neon -opengl opengles"
+USE="${USE} watchdog direncription_allow_v2"
+
+# From arm64-generic overlay
+USE="${USE} legacy_keyboard legacy_power_button"
+USE="${USE} v4l2_codec"
+USE="${USE} -pepper_flash -netflix -internal"
+USE="${USE} -unibuild"
+
+# From ThoriumOS overlay
+USE="${USE} webui-tab-strip highlights assistant assistant-dlc libassistant libassistant-dlc screensaver screensavers diagnostics fdformat edid kvm headers linux-mod linux_headers linux-headers modules kmod sensors include_vmlinuz virgl"
+
+# Enable the OS installation feature
+USE="${USE} os_install_service"
+
+# Enable Google Drive.
+USE="${USE} googledrive fuse-drivefs google-drive-fs drivefs libfuse fuse fusebox spaced user_allow_other"
+
+# Enable NFS, FAT/FAT32, NVMe, and eMMC Tools.
+USE="${USE} nfs vfat nvme mmc"
+
+# Enable libinput to handle touchpad if the gestures library is not working well.
+USE="${USE} libinput"
+
+# The rgbkbd service crashes constantly. b/243560151
+USE="${USE} -rgbkbd"
+
+# Remove debug constructs.
+USE="${USE} -debug -chrome_debug -chrome_debug_tests -chromeless_tests -cros-debug"
+
+# Enable non-free codecs and components.
+USE="${USE} chrome_media vaapi x264 x265 widevine lto thinlto"
+
+# Enable background blur on all graphics chipsets.
+USE="${USE} background_blur"
+
+# USE flags for Crostini, CrOSVM, and containers.
+USE="${USE} crostini bruschetta containers kvm_host crosvm-gpu virtio_gpu adb"
+
+USE="${USE} -wifi_bootstrapping -power_management -video_capture_use_gpu_memory_buffer"

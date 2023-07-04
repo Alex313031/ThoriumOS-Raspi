@@ -1,0 +1,12 @@
+media-sound/adhd::chromiumos
+media-libs/minigbm::chromiumos
+virtual/chromeos-config-bsp::chromiumos
+media-libs/mesa::chromiumos
+media-libs/arc-mesa::arc-plus
+=media-libs/arc-mesai-9999::arc-plus
+media-libs/arc-cros-gralloc::chromiumos
+media-libs/libcamera::chromiumos
+chromeos-base/vpd::chromiumos
+chromeos-base/vpd::patches
+chromeos-base/vpd::openfyde-patches
+virtual/linux-sources::chromiumos
