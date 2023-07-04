@@ -1,18 +1,15 @@
 # FOR MY USE ONLY
 cros-317118
 
-# KERNEL CONFIG
-CONFIG_SENSORS_IT87=m
-
 # COMPILER OPTIMIZATIONS
--O3 -pipe -mavx -maes
+-O3 -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard -Wno-error
+-O3 -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard -Wno-error
+-O3 -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard -Wno-error
 -Wl,-O3 -Wl,--lto-O3
--Copt-level=3 -Ctarget-feature=+sse3,+sse4,+aes,+avx
-mmx mmxext sse sse2 sse3 ssse3 sse4_1 sse4_2 aes avx
 
 # FILES TO MODIFY FOR COMPILER OPTIMIZATIONS
-third_party/portage-stable/profiles/arch/amd64/make.defaults
-chromiumos-overlay/profiles/arch/amd64/make.defaults
+third_party/portage-stable/profiles/arch/arm64/make.defaults
+chromiumos-overlay/profiles/arch/arm64/make.defaults
 chromiumos-overlay/profiles/default/linux/make.defaults
 chromiumos-overlay/profiles/targets/chromeos/make.defaults
 chromiumos-overlay/profiles/targets/sdk/make.defaults
@@ -25,10 +22,6 @@ widevine
 
 libassistant
 
-/home/alex/chromium/src/ash/webui/ demo app, help app, and sample app
-
-chrome_targets+=( app_shell ) > chrome_targets+=( app_shell chrome content_shell)
-
 		"is_official_build=true"
 		"enable_stripping=true"
 		"dcheck_always_on=false"
@@ -39,7 +32,6 @@ chrome_targets+=( app_shell ) > chrome_targets+=( app_shell chrome content_shell
 		"enable_profiling=false"
 		"is_component_build=false"
 		"symbol_level=0"
-		"enable_nacl=true"
 		"optimize_webui=true"
 		"enable_webui_tab_strip=true"
 		"use_lld=true"
@@ -60,7 +52,6 @@ chrome_targets+=( app_shell ) > chrome_targets+=( app_shell chrome content_shell
 		"is_component_ffmpeg=false"
 		"use_webaudio_ffmpeg=false"
 		"use_webaudio_pffft=true"
-		"use_vaapi=true"
 		"enable_widevine=true"
 		"bundle_widevine_cdm=true"
 		"ignore_missing_widevine_signing_cert=true"
@@ -81,9 +72,6 @@ chrome_targets+=( app_shell ) > chrome_targets+=( app_shell chrome content_shell
 		"enable_mse_mpeg2ts_stream_parser=true"
 		"use_thin_lto=true"
 		"thin_lto_enable_optimizations=true"
-
-# USE MESA-REVEN
-mesa-llvmpipe >> mesa-reven
 
 # WIDEVINE PATCH
 
@@ -112,22 +100,3 @@ patch_widevine() {
     cp ${FILESDIR}/widevine/libwidevinecdm.so $target_dir || die "Could not copy file to $bin_file"
   fi
 }
-
-
---- a/third_party/widevine/cdm/widevine.gni
-+++ b/third_party/widevine/cdm/widevine.gni
-@@ -12,7 +12,9 @@ declare_args() {
-   # on Android and Fuchsia platforms.
-   # Can be optionally enabled in Chromium on non-Android platforms. Please see
-   # //src/third_party/widevine/LICENSE file for details.
--  enable_widevine = (is_chrome_branded && !is_fuchsia) || is_android
-+  enable_widevine = true
- 
- # Disable Widevine when running linux-chromeos.
-@@ -53,7 +55,7 @@ assert(!enable_media_foundation_widevine_cdm || is_win)
- 
- declare_args() {
-   # Widevine CDM is bundled as part of Google Chrome builds.
--  bundle_widevine_cdm = enable_library_widevine_cdm && is_chrome_branded
-+  bundle_widevine_cdm = true
- }

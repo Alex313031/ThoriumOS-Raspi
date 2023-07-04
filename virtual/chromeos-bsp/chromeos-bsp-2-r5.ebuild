@@ -37,8 +37,6 @@ RDEPEND="
 	dev-util/mem
 	dev-util/strace
 	dev-vcs/git
-	media-libs/x264
-	media-libs/x265
 	net-analyzer/iftop
 	net-analyzer/netperf
 	net-libs/miniupnpc
