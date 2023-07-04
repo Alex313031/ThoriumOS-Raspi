@@ -2,7 +2,7 @@
 # Distributed under the license specified in the root directory of this project.
 
 EAPI="5"
-inherit udev
+inherit appid udev
 DESCRIPTION="drivers, config files for Raspberry Pi 4"
 HOMEPAGE="https://fydeos.io"
 

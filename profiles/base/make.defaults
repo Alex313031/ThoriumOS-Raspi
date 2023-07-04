@@ -19,7 +19,7 @@ USE="${USE} -pepper_flash -netflix -internal"
 USE="${USE} -unibuild"
 
 # From ThoriumOS overlay
-USE="${USE} webui-tab-strip highlights assistant assistant-dlc libassistant libassistant-dlc screensaver screensavers diagnostics fdformat edid kvm headers linux-mod linux_headers linux-headers modules kmod sensors include_vmlinuz virgl"
+USE="${USE} webui-tab-strip highlights assistant assistant-dlc libassistant libassistant-dlc screensaver screensavers diagnostics fdformat edid kvm headers linux-mod linux_headers linux-headers modules kmod sensors include_vmlinuz"
 
 # Enable the OS installation feature
 USE="${USE} os_install_service"

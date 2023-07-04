@@ -19,12 +19,14 @@ KEYWORDS="*"
 IUSE="chrome-dev-flags drivefs frick-wallpapers libassistant thoriumos widevine gflags"
 
 RDEPEND="
-	app-misc/sl
+	!chromeos-base/chromeos-bsp-null
+	!media-libs/mesa-llvmpipe
+	!sys-firmware/intel-microcode
 	chromeos-base/baseboard-bsp
 	chromeos-base/chromeos-bsp-raspi-frick
-	virtual/fyde-packages
-	chrome-dev-flags? ( chromeos-base/bash-skel )
+	chromeos-base/bash-skel
 	chromeos-base/assistant-dlc
+	virtual/fyde-packages
 	thoriumos? ( chromeos-base/chromeos-osrelease )
 	chromeos-base/cros-trimly
 	libassistant? ( chromeos-base/libassistant )
@@ -33,6 +35,7 @@ RDEPEND="
 	drivefs? ( chromeos-base/google-drive-fs )
 	widevine? ( chromeos-base/libwidevine )
 	gflags? ( dev-cpp/gflags )
+	app-misc/sl
 	dev-util/mem
 	dev-util/strace
 	dev-vcs/git
