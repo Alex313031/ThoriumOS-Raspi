@@ -55,3 +55,6 @@ sys-apps/gptfdisk -ncurses
 
 # Bluez cups bug fix
 net-wireless/bluez cups hid2hci
+
+# Fix flashrom
+sys-apps/flashrom -internal

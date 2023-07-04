@@ -25,7 +25,6 @@ RDEPEND="
 	virtual/fyde-packages
 	chrome-dev-flags? ( chromeos-base/bash-skel )
 	chromeos-base/assistant-dlc
-	chromeos-base/chromeos-bsp-amd64-frick
 	thoriumos? ( chromeos-base/chromeos-osrelease )
 	chromeos-base/cros-trimly
 	libassistant? ( chromeos-base/libassistant )
@@ -59,7 +58,6 @@ RDEPEND="
 	sys-fs/cryptsetup
 	sys-fs/mtools
 	sys-fs/ncdu
-	sys-fs/ufiformat
 	sys-libs/libcap
 	sys-libs/zlib
 	sys-process/htop

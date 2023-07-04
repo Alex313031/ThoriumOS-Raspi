@@ -17,7 +17,6 @@ index ee69f52c6d..dca3d7a554 100644
      cmd.arg("--yes");
 +    // For arm devices, like the Raspberry Pi
 +    cmd.arg("--skip_postinstall");
-+    cmd.arg("--skip_dst_removable");
 +    cmd.arg("--skip_src_removable");
  
      if boot_mode == BootMode::Uefi {
